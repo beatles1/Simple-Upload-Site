@@ -49,7 +49,7 @@
 		</div>
 		<div class="right menu">
 			<div class="item">
-				<div class="ui primary button">Admin</div>
+				<a class="ui primary button" href="a">Admin</a>
 			</div>
 		</div>
 		</div>
