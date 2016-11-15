@@ -34,9 +34,8 @@
 	<head>
 		<title>Simple Upload Site</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="../lib/semantic.min.js" type="text/javascript"></script>
-		<script src="../lib/dropzone.js"></script>
-		<link rel="stylesheet" type="text/css" href="../lib/semantic.min.css">
+		<script src="../lib/semantic-ui/semantic.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="../lib/semantic-ui/semantic.min.css">
 		<link rel="stylesheet" type="text/css" href="../lib/font-awesome/css/font-awesome.min.css">
 	</head>
 	<body>
