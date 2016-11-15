@@ -5,6 +5,7 @@ $conf = true;
 function loadConf() {
 	global $conf;
 	$str = file_get_contents('conf.json');
+	if (!$str) {$str = file_get_contents('a/conf.json');}
 	if ($str) {
 		$conf = json_decode($str, true);
 	} else {
