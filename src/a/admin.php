@@ -1,4 +1,6 @@
 <?php
+	include_once('../lib/funcs.php');
+
 	$uploadMessage = false;
 	$urlMessage = false;
 	$nameMessage = false;
@@ -95,11 +97,6 @@
 				}
 			?>
 
-			<br />
-			<br />
-			<br />
-			<br />
-
 			<h1 class="ui header">		<!-- SITE NAME -->
 				Site Name
 			</h1>
@@ -114,6 +111,38 @@
 					echo '<div class="ui message">' . $nameMessage . '</div>';
 				}
 			?>
+
+			<h1 class="ui header">		<!-- FILES -->
+				Files
+			</h1>
+
+			<div class="ui middle aligned divided list">
+
+				<?php
+					if ($handle = opendir('../')) {
+						while (false !== ($entry = readdir($handle))) {
+							if (substr($entry, 0, 1) != "." && substr($entry, -4) != ".php" && $entry != "a" && $entry != "lib") {
+								echo '<div class="item">';
+								echo '<div class="right floated content"><a class="ui button" href="../' . $entry . '">Download</a></div>';
+								echo '<i class="icon file ';
+								$ext = pathinfo('../' . $entry, PATHINFO_EXTENSION);
+								if (array_key_exists($ext, $fileicons)) {
+									echo $fileicons[$ext];
+								} else {
+									echo $fileicons['default'];
+								}
+								echo ' outline big left floated"></i> ';
+								echo '<div class="content">'; 
+								echo '<div class="header"><a href="../' . $entry . '">' . $entry . '</a></div>';
+								echo '<div class="description">' . formatbytes(filesize('../' . $entry), 1) . '</div>';
+								echo '</div></div>';
+							}
+						}
+						closedir($handle);
+					}
+				?>
+
+			</div>
 
 		</div>
 	</body>
