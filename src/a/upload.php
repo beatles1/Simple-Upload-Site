@@ -1,6 +1,7 @@
 <?php
 	$uploadMessage = false;
 	$urlMessage = false;
+	$nameMessage = false;
 	if ($_SESSION['loggedIn']) {
 		if (isset($_FILES['dataupload'])) {
 			if(move_uploaded_file($_FILES['dataupload']['tmp_name'], "../" . basename($_FILES['dataupload']['name']))) {
@@ -8,7 +9,7 @@
 			} else {
 				$uploadMessage = "Upload failed.";
 			}
-		} else if (isset($_POST["dataurl"])) {
+		} else if (isset($_POST['dataurl'])) {
 			$url = $_POST["dataurl"];
 			if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 				$filename = explode("/", $url);
@@ -21,6 +22,15 @@
 				}
 			} else {
 				$urlMessage = "Invalid URL.";
+			}
+		} elseif (isset($_POST['newSiteName'])) {
+			$newName = $_POST['newSiteName'];
+			if ($newName != "") {
+				$conf["siteName"] = $newName;
+				saveConf();
+				$nameMessage = "Name succesfully updated.";
+			} else {
+				$nameMessage = "Name cannot be blank.";
 			}
 		}
 	} else {
@@ -55,7 +65,7 @@
 
 		<div class="ui text container">
 
-			<h1 class="ui header">
+			<h1 class="ui header">		<!-- UPLOAD -->
 				Upload
 			</h1>
 
@@ -70,7 +80,7 @@
 				}
 			?>
 
-			<h1 class="ui header">
+			<h1 class="ui header">		<!-- SIDELOAD -->
 				Sideload
 			</h1>
 
@@ -82,6 +92,26 @@
 			<?php
 				if ($urlMessage) {
 					echo '<div class="ui message">' . $urlMessage . '</div>';
+				}
+			?>
+
+			<br />
+			<br />
+			<br />
+			<br />
+
+			<h1 class="ui header">		<!-- SITE NAME -->
+				Site Name
+			</h1>
+
+			<form class="ui fluid input" method="post" enctype="multipart/form-data">
+				<input type="text" name="newSiteName" placeholder="Site name" value="<?php echo $conf['siteName']; ?>">
+				<button class="ui button">Update</button>
+			</form>
+
+			<?php
+				if ($nameMessage) {
+					echo '<div class="ui message">' . $nameMessage . '</div>';
 				}
 			?>
 

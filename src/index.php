@@ -1,6 +1,6 @@
 <?php
 	include_once('lib/funcs.php');
-	include_once('lib/conf.php');
+	include_once('a/conf.php');
 ?>
 
 <!DOCTYPE HTML>
