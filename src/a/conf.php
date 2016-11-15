@@ -16,5 +16,6 @@ function loadConf() {
 loadConf();
 
 function saveConf() {
+	global $conf;
 	file_put_contents('conf.json', json_encode($conf,TRUE));
 }
