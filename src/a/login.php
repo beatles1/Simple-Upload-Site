@@ -5,7 +5,7 @@
 	if (isset($_POST['pass']) && hash("sha256", $_POST['pass'] . $salt) == $passHash ) {
 		$_SESSION['loggedIn'] = true;
 		
-		include_once('upload.php');
+		include_once('admin.php');
 		die();
 	} elseif (isset($_POST['pass'])) {
 		$loginFailed = true;
