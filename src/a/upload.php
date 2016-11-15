@@ -32,7 +32,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Simple Upload Site</title>
+		<title><?php echo $conf['siteName']; ?></title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="../lib/semantic-ui/semantic.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="../lib/semantic-ui/semantic.min.css">
@@ -41,7 +41,7 @@
 
 		<div class="ui menu">
 		<div class="header item">
-			Simple Upload Site
+			<?php echo $conf['siteName']; ?>
 		</div>
 		<div class="right menu">
 			<div class="item">
