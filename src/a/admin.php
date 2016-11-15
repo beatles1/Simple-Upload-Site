@@ -123,7 +123,7 @@
 						while (false !== ($entry = readdir($handle))) {
 							if (substr($entry, 0, 1) != "." && substr($entry, -4) != ".php" && $entry != "a" && $entry != "lib") {
 								echo '<div class="item">';
-								echo '<div class="right floated content"><a class="ui button" href="../' . $entry . '">Download</a></div>';
+								echo '<div class="right floated content"><a class="ui red button" href="delete.php?f=' . $entry . '">Delete</a></div>';
 								echo '<i class="icon file ';
 								$ext = pathinfo('../' . $entry, PATHINFO_EXTENSION);
 								if (array_key_exists($ext, $fileicons)) {
