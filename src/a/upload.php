@@ -13,7 +13,7 @@
 			if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 				$filename = explode("/", $url);
 				$filename = end($filename);
-				if (file_put_contents($filename, file_get_contents($url))) {
+				if (file_put_contents('../' . $filename, file_get_contents($url))) {
 					$urlMessage = $filename . " sucessfully uploaded.";
 				} else {
 					unlink($filename);
@@ -59,16 +59,31 @@
 				Upload
 			</h1>
 
-			<form class="ui input" method="post" enctype="multipart/form-data">
+			<form class="ui fluid input" method="post" enctype="multipart/form-data">
 				<input type="file" name="dataupload">
 				<button class="ui button">Upload</button>
 			</form>
 
-<?php
-	if ($uploadMessage) {
-		echo '<div class="ui message">' . $uploadMessage . '</div>';
-	}
-?>
+			<?php
+				if ($uploadMessage) {
+					echo '<div class="ui message">' . $uploadMessage . '</div>';
+				}
+			?>
+
+			<h1 class="ui header">
+				Sideload
+			</h1>
+
+			<form class="ui fluid input" method="post" enctype="multipart/form-data">
+				<input type="text" name="dataurl" placeholder="Enter URL...">
+				<button class="ui button">Sideload</button>
+			</form>
+
+			<?php
+				if ($urlMessage) {
+					echo '<div class="ui message">' . $urlMessage . '</div>';
+				}
+			?>
 
 		</div>
 	</body>
